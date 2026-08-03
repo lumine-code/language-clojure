@@ -2,6 +2,7 @@
 ; <- punctuation.section.expression.begin
 ; ^ meta.definition.global
 ;   ^ entity.global
+;   ^ meta.definition.global.name.clojure
 ;         ^ punctuation.section.expression.end
 
 (defn foobar [a b]
