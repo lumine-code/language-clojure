@@ -9,6 +9,10 @@ Clojure language support.
 - **Snippets**: shortcuts for common forms and definitions.
 - **Code folding**: collapse forms and collections.
 
+## Installation
+
+To install `language-clojure` search for _language-clojure_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-clojure`.
+
 ## Contributing
 
 Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub. Any feedback is welcome!
