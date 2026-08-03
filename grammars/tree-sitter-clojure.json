@@ -1,7 +1,7 @@
 {
   "name": "Clojure",
   "scopeName": "source.clojure",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "injectionRegExp": "^source-clojure$",
   "parser": "tree-sitter-clojure",
   // Matches the TextMate grammar's shebang and modeline rules, which would

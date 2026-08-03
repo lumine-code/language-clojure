@@ -17,22 +17,22 @@ describe("Clojure grammars", () => {
     await runGrammarTests(path.join(__dirname, "fixtures", "textmate-tokens.clj"), /;/);
   });
 
-  it("tokenizes the editor using modern tree-sitter parser", async () => {
-    setConfigForLanguageMode("modern-tree-sitter");
+  it("tokenizes the editor using tree-sitter parser", async () => {
+    setConfigForLanguageMode("tree-sitter");
     atom.config.set("language-clojure.dismissTag", true);
     atom.config.set("language-clojure.commentTag", false);
     atom.config.set("language-clojure.markDeprecations", true);
     await runGrammarTests(path.join(__dirname, "fixtures", "tokens.clj"), /;/);
   });
 
-  it("tokenizes EDN using modern tree-sitter parser", async () => {
-    setConfigForLanguageMode("modern-tree-sitter");
+  it("tokenizes EDN using tree-sitter parser", async () => {
+    setConfigForLanguageMode("tree-sitter");
     atom.config.set("language-clojure.dismissTag", true);
     await runGrammarTests(path.join(__dirname, "fixtures", "tokens.edn"), /;/);
   });
 
-  it("tokenizes the editor using modern tree-sitter, but with all default configs toggled", async () => {
-    setConfigForLanguageMode("modern-tree-sitter");
+  it("tokenizes the editor using tree-sitter, but with all default configs toggled", async () => {
+    setConfigForLanguageMode("tree-sitter");
     atom.config.set("language-clojure.dismissTag", false);
     atom.config.set("language-clojure.commentTag", true);
     atom.config.set("language-clojure.markDeprecations", false);
@@ -40,7 +40,7 @@ describe("Clojure grammars", () => {
   });
 
   it("folds Clojure code", async () => {
-    setConfigForLanguageMode("modern-tree-sitter");
+    setConfigForLanguageMode("tree-sitter");
     await runFoldsTests(path.join(__dirname, "fixtures", "tree-sitter-folds.clj"), /;/);
   });
 });

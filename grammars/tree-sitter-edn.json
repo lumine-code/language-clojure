@@ -1,7 +1,7 @@
 {
   "name": "Clojure EDN",
   "scopeName": "source.edn",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "injectionRegExp": "^source-clojure-edn$",
   "parser": "tree-sitter-clojure",
   "fileTypes": [],
