@@ -4,6 +4,13 @@
   "type": "modern-tree-sitter",
   "injectionRegExp": "^source-clojure$",
   "parser": "tree-sitter-clojure",
+  // Matches the TextMate grammar's shebang and modeline rules, which would
+  // otherwise win by 0.5 against the 0.1 that prefers Tree-sitter.
+  "firstLineRegex": [
+    "^#!.*\\bboot\\b",
+    "-\\*-[^*]*\\bmode\\s*:\\s*clojure(script)?\\b[^*]*-\\*-",
+    "vim\\b.*\\bset\\b.*\\b(filetype|ft|syntax)=clojure"
+  ],
   "fileTypes": [
     "boot",
     "clj",
