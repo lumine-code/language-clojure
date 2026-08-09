@@ -2,11 +2,11 @@ describe("Clojure grammar", function () {
   let grammar = null;
 
   beforeEach(function () {
-    atom.config.set("language.useTreeSitterParsers", false);
+    lumine.config.set("language.useTreeSitterParsers", false);
 
-    waitsForPromise(() => atom.packages.activatePackage("language-clojure"));
+    waitsForPromise(() => lumine.packages.activatePackage("language-clojure"));
 
-    runs(() => (grammar = atom.grammars.grammarForScopeName("source.clojure")));
+    runs(() => (grammar = lumine.grammars.grammarForScopeName("source.clojure")));
   });
 
   it("parses the grammar", function () {

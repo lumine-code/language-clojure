@@ -6,28 +6,28 @@
 
 describe("Clojure grammar selection", () => {
   beforeEach(async () => {
-    await atom.packages.activatePackage("language-clojure");
-    atom.config.set("language.useTreeSitterParsers", true);
+    await lumine.packages.activatePackage("language-clojure");
+    lumine.config.set("language.useTreeSitterParsers", true);
   });
 
   it("prefers the Tree-sitter grammar for a boot shebang", () => {
-    const grammar = atom.grammars.selectGrammar("build.clj", "#!/usr/bin/env boot\n(ns build)\n");
+    const grammar = lumine.grammars.selectGrammar("build.clj", "#!/usr/bin/env boot\n(ns build)\n");
 
     expect(grammar.scopeName).toBe("source.clojure");
     expect(grammar.constructor.name).toBe("TreeSitterGrammar");
   });
 
   it("prefers the Tree-sitter grammar for an ordinary namespace", () => {
-    const grammar = atom.grammars.selectGrammar("build.clj", "(ns build)\n");
+    const grammar = lumine.grammars.selectGrammar("build.clj", "(ns build)\n");
 
     expect(grammar.scopeName).toBe("source.clojure");
     expect(grammar.constructor.name).toBe("TreeSitterGrammar");
   });
 
   it("still honours the TextMate preference", () => {
-    atom.config.set("language.useTreeSitterParsers", false);
+    lumine.config.set("language.useTreeSitterParsers", false);
 
-    const grammar = atom.grammars.selectGrammar("build.clj", "#!/usr/bin/env boot\n(ns build)\n");
+    const grammar = lumine.grammars.selectGrammar("build.clj", "#!/usr/bin/env boot\n(ns build)\n");
 
     expect(grammar.scopeName).toBe("source.clojure");
     expect(grammar.constructor.name).toBe("Grammar");

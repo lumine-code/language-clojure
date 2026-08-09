@@ -2,14 +2,14 @@ const path = require("path");
 
 function setConfigForLanguageMode(mode) {
   let useTreeSitterParsers = mode !== "textmate";
-  atom.config.set("language.useTreeSitterParsers", useTreeSitterParsers);
+  lumine.config.set("language.useTreeSitterParsers", useTreeSitterParsers);
 }
 
 describe("Clojure grammars", () => {
   beforeEach(async () => {
-    await atom.packages.activatePackage("language-c");
-    await atom.packages.activatePackage("language-javascript");
-    await atom.packages.activatePackage("language-clojure");
+    await lumine.packages.activatePackage("language-c");
+    await lumine.packages.activatePackage("language-javascript");
+    await lumine.packages.activatePackage("language-clojure");
   });
 
   it("tokenizes the editor using TextMate parser", async () => {
@@ -19,23 +19,23 @@ describe("Clojure grammars", () => {
 
   it("tokenizes the editor using tree-sitter parser", async () => {
     setConfigForLanguageMode("tree-sitter");
-    atom.config.set("language-clojure.dismissTag", true);
-    atom.config.set("language-clojure.commentTag", false);
-    atom.config.set("language-clojure.markDeprecations", true);
+    lumine.config.set("language-clojure.dismissTag", true);
+    lumine.config.set("language-clojure.commentTag", false);
+    lumine.config.set("language-clojure.markDeprecations", true);
     await runGrammarTests(path.join(__dirname, "fixtures", "tokens.clj"), /;/);
   });
 
   it("tokenizes EDN using tree-sitter parser", async () => {
     setConfigForLanguageMode("tree-sitter");
-    atom.config.set("language-clojure.dismissTag", true);
+    lumine.config.set("language-clojure.dismissTag", true);
     await runGrammarTests(path.join(__dirname, "fixtures", "tokens.edn"), /;/);
   });
 
   it("tokenizes the editor using tree-sitter, but with all default configs toggled", async () => {
     setConfigForLanguageMode("tree-sitter");
-    atom.config.set("language-clojure.dismissTag", false);
-    atom.config.set("language-clojure.commentTag", true);
-    atom.config.set("language-clojure.markDeprecations", false);
+    lumine.config.set("language-clojure.dismissTag", false);
+    lumine.config.set("language-clojure.commentTag", true);
+    lumine.config.set("language-clojure.markDeprecations", false);
     await runGrammarTests(path.join(__dirname, "fixtures", "config-toggle.clj"), /;/);
   });
 
