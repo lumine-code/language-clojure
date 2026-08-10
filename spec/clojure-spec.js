@@ -1,12 +1,12 @@
 describe("Clojure grammar", function () {
   let grammar = null;
 
-  beforeEach(function () {
+  beforeEach(async () => {
     lumine.config.set("language.useTreeSitterParsers", false);
 
-    waitsForPromise(() => lumine.packages.activatePackage("language-clojure"));
+    await lumine.packages.activatePackage("language-clojure");
 
-    runs(() => (grammar = lumine.grammars.grammarForScopeName("source.clojure")));
+    grammar = lumine.grammars.grammarForScopeName("source.clojure");
   });
 
   it("parses the grammar", function () {
