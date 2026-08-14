@@ -11,7 +11,7 @@ Clojure language support.
 
 ## Installation
 
-To install `language-clojure` search for _language-clojure_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-clojure`.
+To install `language-clojure` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-clojure`.
 
 ## Contributing
 
