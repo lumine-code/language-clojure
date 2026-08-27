@@ -31,18 +31,21 @@
     "dismissTag": {
       "title": "Dismiss Tag",
       "description": "Highlights forms after #_ as comments",
+      "scopeResolution": "grammar",
       "type": "boolean",
       "default": true
     },
     "commentTag": {
       "title": "Comment Tag",
       "description": "Highlights forms like (comment ...) as comments",
+      "scopeResolution": "grammar",
       "type": "boolean",
       "default": false
     },
     "markDeprecations": {
       "title": "Mark Deprecations",
       "description": "Marks deprecations like `use`",
+      "scopeResolution": "grammar",
       "type": "boolean",
       "default": true
     }
