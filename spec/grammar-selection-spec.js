@@ -7,7 +7,7 @@
 describe("Clojure grammar selection", () => {
   beforeEach(async () => {
     await lumine.packages.activatePackage("language-clojure");
-    lumine.config.set("language.useTreeSitterParsers", true);
+    lumine.config.set("editor.useTreeSitterParsers", true);
   });
 
   it("prefers the Tree-sitter grammar for a boot shebang", () => {
@@ -25,7 +25,7 @@ describe("Clojure grammar selection", () => {
   });
 
   it("still honours the TextMate preference", () => {
-    lumine.config.set("language.useTreeSitterParsers", false);
+    lumine.config.set("editor.useTreeSitterParsers", false);
 
     const grammar = lumine.grammars.selectGrammar("build.clj", "#!/usr/bin/env boot\n(ns build)\n");
 
