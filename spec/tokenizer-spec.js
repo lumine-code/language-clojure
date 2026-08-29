@@ -1,4 +1,7 @@
+const fs = require("fs");
 const path = require("path");
+
+const queryDir = path.join(__dirname, "..", "grammars", "ts");
 
 function setConfigForLanguageMode(mode) {
   let useTreeSitterParsers = mode !== "textmate";
@@ -42,5 +45,16 @@ describe("Clojure grammars", () => {
   it("folds Clojure code", async () => {
     setConfigForLanguageMode("tree-sitter");
     await runFoldsTests(path.join(__dirname, "fixtures", "tree-sitter-folds.clj"), /;/);
+  });
+
+  it("roots EDN collection punctuation captures on leaf tokens", () => {
+    const queries = ["edn-only-highlights.scm", "edn-highlights.scm"]
+      .map((name) => fs.readFileSync(path.join(queryDir, name), "utf8"))
+      .join("\n");
+
+    expect(queries).not.toMatch(/\((?:list_lit|vec_lit|map_lit|set_lit)\s*\n\s*["(]/);
+    for (const type of ["list_lit", "vec_lit", "map_lit", "set_lit"]) {
+      expect(queries).toContain(`(#is? test.childOfType ${type})`);
+    }
   });
 });

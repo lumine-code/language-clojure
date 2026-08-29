@@ -5,20 +5,26 @@
 ;; theme should not have to match two segments for one construct.
 
 ;; Collections
-(vec_lit
- "[" @punctuation.section.vector.begin.clojure (#is-not? test.descendantOfNodeWithData "clojure.dismissTag")
- "]" @punctuation.section.vector.end.clojure)
-@meta.vector.clojure
+(vec_lit) @meta.vector.clojure
+(("[" @punctuation.section.vector.begin.clojure)
+  (#is? test.childOfType vec_lit)
+  (#is-not? test.descendantOfNodeWithData "clojure.dismissTag"))
+(("]" @punctuation.section.vector.end.clojure)
+  (#is? test.childOfType vec_lit))
 
-(map_lit
- "{" @punctuation.section.map.begin.clojure (#is-not? test.descendantOfNodeWithData "clojure.dismissTag")
- "}" @punctuation.section.map.end.clojure)
-@meta.map.clojure
+(map_lit) @meta.map.clojure
+(("{" @punctuation.section.map.begin.clojure)
+  (#is? test.childOfType map_lit)
+  (#is-not? test.descendantOfNodeWithData "clojure.dismissTag"))
+(("}" @punctuation.section.map.end.clojure)
+  (#is? test.childOfType map_lit))
 
-(set_lit
- ("#" "{") @punctuation.section.set.begin.clojure (#is-not? test.descendantOfNodeWithData "clojure.dismissTag")
- "}" @punctuation.section.set.end.clojure)
-@meta.set.clojure
+(set_lit) @meta.set.clojure
+(["#" "{"] @punctuation.section.set.begin.clojure
+  (#is? test.childOfType set_lit)
+  (#is-not? test.descendantOfNodeWithData "clojure.dismissTag"))
+(("}" @punctuation.section.set.end.clojure)
+  (#is? test.childOfType set_lit))
 
 (meta_lit) @meta.metadata.clojure
 
