@@ -2,14 +2,14 @@
   "name": "Clojure EDN",
   "scopeName": "source.edn",
   "type": "tree-sitter",
-  "injectionRegExp": "^source-clojure-edn$",
+  "injectionNames": ["edn"],
   "parser": "tree-sitter-clojure",
   "fileTypes": [],
   "treeSitter": {
     "parserSource": "github:mauricioszabo/tree-sitter-clojure#59051aa9c4344d9f8d81264b423b7fd5199cc2d6",
     "wasmBuildTool": "tree-sitter-cli#v0.26.13",
-    "grammar": "ts/grammar.wasm",
-    "highlightsQuery": ["ts/edn-only-highlights.scm", "ts/edn-highlights.scm"],
-    "foldsQuery": "ts/folds.scm"
+    "grammar": "clojure.wasm",
+    "highlightsQuery": ["edn-only-highlights.scm", "clojure-edn-highlights.scm"],
+    "foldsQuery": "clojure-folds.scm"
   }
 }

@@ -1,12 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const queryDir = path.join(__dirname, "..", "grammars", "ts");
-
-function setConfigForLanguageMode(mode) {
-  let useTreeSitterParsers = mode !== "textmate";
-  lumine.config.set("editor.useTreeSitterParsers", useTreeSitterParsers);
-}
+const queryDir = path.join(__dirname, "..", "grammars");
 
 describe("Clojure grammars", () => {
   beforeEach(async () => {
@@ -15,13 +10,7 @@ describe("Clojure grammars", () => {
     await lumine.packages.activatePackage("language-clojure");
   });
 
-  it("tokenizes the editor using TextMate parser", async () => {
-    setConfigForLanguageMode("textmate");
-    await runGrammarTests(path.join(__dirname, "fixtures", "textmate-tokens.clj"), /;/);
-  });
-
   it("tokenizes the editor using tree-sitter parser", async () => {
-    setConfigForLanguageMode("tree-sitter");
     lumine.config.set("language-clojure.dismissTag", true);
     lumine.config.set("language-clojure.commentTag", false);
     lumine.config.set("language-clojure.markDeprecations", true);
@@ -29,13 +18,11 @@ describe("Clojure grammars", () => {
   });
 
   it("tokenizes EDN using tree-sitter parser", async () => {
-    setConfigForLanguageMode("tree-sitter");
     lumine.config.set("language-clojure.dismissTag", true);
     await runGrammarTests(path.join(__dirname, "fixtures", "tokens.edn"), /;/);
   });
 
   it("tokenizes the editor using tree-sitter, but with all default configs toggled", async () => {
-    setConfigForLanguageMode("tree-sitter");
     lumine.config.set("language-clojure.dismissTag", false);
     lumine.config.set("language-clojure.commentTag", true);
     lumine.config.set("language-clojure.markDeprecations", false);
@@ -43,12 +30,11 @@ describe("Clojure grammars", () => {
   });
 
   it("folds Clojure code", async () => {
-    setConfigForLanguageMode("tree-sitter");
     await runFoldsTests(path.join(__dirname, "fixtures", "tree-sitter-folds.clj"), /;/);
   });
 
   it("roots EDN collection punctuation captures on leaf tokens", () => {
-    const queries = ["edn-only-highlights.scm", "edn-highlights.scm"]
+    const queries = ["edn-only-highlights.scm", "clojure-edn-highlights.scm"]
       .map((name) => fs.readFileSync(path.join(queryDir, name), "utf8"))
       .join("\n");
 

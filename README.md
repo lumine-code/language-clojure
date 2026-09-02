@@ -4,7 +4,7 @@ Clojure language support.
 
 ## Features
 
-- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-clojure](https://github.com/mauricioszabo/tree-sitter-clojure) and TextMate grammars derived from [atom/language-clojure](https://github.com/atom/language-clojure).
+- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-clojure](https://github.com/mauricioszabo/tree-sitter-clojure).
 - **Syntax highlighting**: full grammar coverage for Clojure and EDN files.
 - **Snippets**: shortcuts for common forms and definitions.
 - **Code folding**: collapse forms and collections.
