@@ -32,7 +32,7 @@ describe("Clojure grammars", () => {
     return editor.scopeDescriptorForBufferPosition([row, column]).getScopesArray();
   }
 
-  function rawCaptures(startRow, endRow) {
+  async function rawCaptures(startRow, endRow) {
     const options =
       startRow == null
         ? undefined
@@ -40,8 +40,8 @@ describe("Clojure grammars", () => {
             startPosition: new Point(startRow, 0),
             endPosition: new Point(endRow, 0),
           };
-    const layer = languageMode.rootLanguageLayer;
-    return layer.queries.highlightsQuery.captures(layer.tree.rootNode, options);
+    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", options);
+    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
   }
 
   it("tokenizes the editor using tree-sitter parser", async () => {
@@ -119,7 +119,7 @@ describe("Clojure grammars", () => {
       "source.edn",
     );
 
-    const captures = rawCaptures(2, 5).filter(
+    const captures = (await rawCaptures(2, 5)).filter(
       (capture) =>
         capture.name.startsWith("punctuation.section.") ||
         capture.name.startsWith("punctuation.definition.string."),
@@ -154,7 +154,7 @@ describe("Clojure grammars", () => {
     lines.push(")");
     await setUp(lines.join("\r\n"));
 
-    const tileCaptures = rawCaptures(2998, 3004);
+    const tileCaptures = await rawCaptures(2998, 3004);
     expect(tileCaptures.length).toBeLessThanOrEqual(64);
     expect(
       tileCaptures
