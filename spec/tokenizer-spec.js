@@ -40,8 +40,9 @@ describe("Clojure grammars", () => {
             startPosition: new Point(startRow, 0),
             endPosition: new Point(endRow, 0),
           };
-    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", options);
-    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
+    const capturesQuery = await editor.getGrammar().getQuery("highlightsQuery");
+    const queryRoot = editor.getSyntaxNodeAtBufferPosition([0, 0], (node) => !node.parent);
+    return capturesQuery.captures(queryRoot, options);
   }
 
   it("tokenizes the editor using tree-sitter parser", async () => {
