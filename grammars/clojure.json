@@ -35,6 +35,7 @@
     "grammar": "clojure.wasm",
     "highlightsQuery": ["clojure-highlights.scm", "clojure-edn-highlights.scm"],
     "foldsQuery": "clojure-folds.scm",
-    "tagsQuery": "clojure-tags.scm"
+    "tagsQuery": "clojure-tags.scm",
+    "injectionsQuery": "clojure-injections.scm"
   }
 }
