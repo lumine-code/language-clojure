@@ -10,6 +10,7 @@
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "clojure.wasm",
     "highlightsQuery": ["edn-only-highlights.scm", "clojure-edn-highlights.scm"],
-    "foldsQuery": "clojure-folds.scm"
+    "foldsQuery": "clojure-folds.scm",
+    "tagsQuery": "edn-tags.scm"
   }
 }

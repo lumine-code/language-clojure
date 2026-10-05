@@ -1,0 +1,43 @@
+{
+  "source.edn": {
+    "text": "{:app {:host \"localhost\" ; comment\n :mode :development} \"paths\" [\"src\"] :enabled true}",
+    "symbols": [
+      {
+        "name": "app",
+        "tag": "property"
+      },
+      {
+        "name": "host",
+        "tag": "property"
+      },
+      {
+        "name": "mode",
+        "tag": "property"
+      },
+      {
+        "name": "paths",
+        "tag": "property"
+      },
+      {
+        "name": "enabled",
+        "tag": "property"
+      }
+    ],
+    "absent": ["development", "localhost", "src"],
+    "only": true
+  },
+  "source.clojure": {
+    "text": "(defn greet [name] (str \"Hello \" name))\n(defprotocol Greeter (welcome [this]))",
+    "symbols": [
+      {
+        "name": "greet",
+        "tag": "function"
+      },
+      {
+        "name": "Greeter",
+        "tag": "struct"
+      }
+    ],
+    "absent": ["name", "str"]
+  }
+}
