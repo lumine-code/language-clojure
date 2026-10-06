@@ -7,10 +7,10 @@
 ;  ^ keyword.control
 ;        ^ comment.block
 
-;; Deprecations
+;; Namespace loading
 (use '[foo.bar])
-; ^ keyword.control
-; ^ !invalid.deprecation
+; ^ entity.name.function
+; ^ !invalid.deprecated
 
 (:use [foo.bar])
 ; ^ !invalid.deprecated

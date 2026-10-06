@@ -99,26 +99,10 @@
 ((sym_name) @meta.symbol.clojure (#eq? @meta.symbol.clojure "import") (#is-not? test.descendantOfNodeWithData "clojure.dismissTag")) @keyword.control.clojure
 ((sym_name) @meta.symbol.clojure (#eq? @meta.symbol.clojure "require") (#is-not? test.descendantOfNodeWithData "clojure.dismissTag")) @keyword.control.clojure
 
-;; USE
-((sym_name)
- @meta.symbol.clojure
- (#eq? @meta.symbol.clojure "use")
- (#is? test.config language-clojure.markDeprecations)
- (#is-not? test.descendantOfNodeWithData clojure.dismissTag))
-@invalid.deprecated.clojure
-
-((sym_name)
- @meta.symbol.clojure
- (#eq? @meta.symbol.clojure "use")
- (#is-not? test.config language-clojure.markDeprecations)
- (#is-not? test.descendantOfNodeWithData clojure.dismissTag))
-@keyword.control.clojure
-
 ;; Namespace declaration
 ((list_lit) @meta.namespace.clojure
   (#is? test.matchAt "firstNamedChild ^ns$")
-  (#is-not? test.descendantOfNodeWithData clojure.dismissTag)
-  (#set! isNamespace true))
+  (#is-not? test.descendantOfNodeWithData clojure.dismissTag))
 
 ((sym_lit) @meta.definition.global.clojure @keyword.control.clojure
   (#eq? @meta.definition.global.clojure "ns")
@@ -133,13 +117,6 @@
   (#is? test.childOfType list_lit)
   (#is? test.matchAt "previousNamedSibling ^ns$")
   (#is-not? test.descendantOfNodeWithData clojure.dismissTag))
-
-((kwd_lit) @invalid.deprecated.clojure
-  (#eq? @invalid.deprecated.clojure ":use")
-  (#is? test.childOfType list_lit)
-  (#is? test.typeAt "previousSibling (")
-  (#is? test.config language-clojure.markDeprecations)
-  (#is? test.descendantOfNodeWithData isNamespace))
 
 ;; Definitions
 ((sym_lit) @keyword.control.clojure

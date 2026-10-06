@@ -41,13 +41,6 @@
       "scopeResolution": "grammar",
       "type": "boolean",
       "default": false
-    },
-    "markDeprecations": {
-      "title": "Mark Deprecations",
-      "description": "Marks deprecations like `use`",
-      "scopeResolution": "grammar",
-      "type": "boolean",
-      "default": true
     }
   },
   "bugs": {

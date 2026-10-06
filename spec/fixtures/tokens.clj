@@ -137,9 +137,10 @@ error/
 ;  ^ keyword.control
 ;        ^ constant.numeric
 
-;; Deprecations
+;; Namespace loading
 (use '[foo.bar])
-; ^ invalid.deprecated
+; ^ entity.name.function
+; ^ !invalid.deprecated
 
 
 (:use [foo.bar])
@@ -147,7 +148,8 @@ error/
 
 (ns other.namespace
   (:use [foo.bar]))
-;   ^ invalid.deprecated
+;   ^ constant.keyword
+;   ^ !invalid.deprecated
 
 ^{:some :meta} (def foo 10)
 ;  ^ meta.metadata.clojure

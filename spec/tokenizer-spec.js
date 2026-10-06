@@ -48,7 +48,6 @@ describe("Clojure grammars", () => {
   it("tokenizes the editor using tree-sitter parser", async () => {
     lumine.config.set("language-clojure.dismissTag", true);
     lumine.config.set("language-clojure.commentTag", false);
-    lumine.config.set("language-clojure.markDeprecations", true);
     await runGrammarTests(path.join(__dirname, "fixtures", "tokens.clj"), /;/);
   });
 
@@ -60,12 +59,42 @@ describe("Clojure grammars", () => {
   it("tokenizes the editor using tree-sitter, but with all default configs toggled", async () => {
     lumine.config.set("language-clojure.dismissTag", false);
     lumine.config.set("language-clojure.commentTag", true);
-    lumine.config.set("language-clojure.markDeprecations", false);
     await runGrammarTests(path.join(__dirname, "fixtures", "config-toggle.clj"), /;/);
   });
 
   it("folds Clojure code", async () => {
     await runFoldsTests(path.join(__dirname, "fixtures", "tree-sitter-folds.clj"), /;/);
+  });
+
+  it("keeps use calls, namespace clauses, and identifiers valid", async () => {
+    await setUp(`(use 'foo.bar)
+(clojure.core/use 'foo.bar)
+(ns example (:use [foo.bar]))
+(let [use identity] use)
+foo/use
+:use`);
+
+    expect(scopesAt(0, "use")).toContain("entity.name.function.clojure");
+    expect(scopesAt(1, "use")).toContain("entity.name.function.clojure");
+    expect(scopesAt(2, ":use")).toContain("constant.keyword.clojure");
+    expect(scopesAt(3, "use", 0)).toContain("meta.symbol.clojure");
+    expect(scopesAt(3, "use", 1)).toContain("meta.symbol.clojure");
+    expect(scopesAt(4, "use")).toContain("meta.symbol.clojure");
+    expect(scopesAt(5, ":use")).toContain("constant.keyword.clojure");
+
+    for (const [row, token, occurrence] of [
+      [0, "use"],
+      [1, "use"],
+      [2, ":use"],
+      [3, "use", 0],
+      [3, "use", 1],
+      [4, "use"],
+      [5, ":use"],
+    ]) {
+      const scopes = scopesAt(row, token, occurrence);
+      expect(scopes).not.toContain("invalid.deprecated.clojure");
+      expect(scopes).not.toContain("keyword.control.clojure");
+    }
   });
 
   it("keeps unbounded EDN collections and string delimiters leaf-rooted", () => {
