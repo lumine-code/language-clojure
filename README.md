@@ -2,6 +2,8 @@
 
 Clojure language support.
 
+Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/language-clojure`).
+
 ## Features
 
 - **Grammars**: provides Tree-sitter grammars built from [tree-sitter-clojure](https://github.com/mauricioszabo/tree-sitter-clojure).
