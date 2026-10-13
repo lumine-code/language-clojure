@@ -1,0 +1,16 @@
+{
+  "title": "language-clojure",
+  "description": "Clojure syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "db5a8c887855d1ff0644daca48004924031ae589",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Clojure syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 472
+    }
+  ]
+}
