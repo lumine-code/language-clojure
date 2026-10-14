@@ -1,16 +1,61 @@
 {
   "title": "language-clojure",
-  "description": "Clojure syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "db5a8c887855d1ff0644daca48004924031ae589",
+  "description": "Clojure syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "807071c131388ec9e1896d5d2c91084e7c258804",
+  "themeSourceRevision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "77da70246ccc79b75a44ce293020a6856225aafd6b6762e70792990ad2c6e929",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 472 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "c4d7a05fe6960ae6fb041981d6cf13e9c0286b17",
+      "dirty": true,
+      "workingTreeHash": "af0ec098e764416df9522f3c6e555050b520e4700da382b2b983b2ff3742bd0a"
+    },
+    "package": {
+      "revision": "807071c131388ec9e1896d5d2c91084e7c258804",
+      "dirty": true,
+      "workingTreeHash": "d46b4fa74e4352c5080e5a96b86ea1f5736de2ba58c5ae5873893042cc7ee6f1"
+    },
+    "language-clojure": {
+      "revision": "807071c131388ec9e1896d5d2c91084e7c258804",
+      "dirty": true,
+      "workingTreeHash": "d46b4fa74e4352c5080e5a96b86ea1f5736de2ba58c5ae5873893042cc7ee6f1"
+    },
+    "one-theme": {
+      "revision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
+      "dirty": true,
+      "workingTreeHash": "25d6ed50595d6b10f7d53e41dbbe8f92dcb5c0e911871356f3e6138e5c76df57"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "signal.clj",
+      "sha256": "04f7caafd8857e4788a9bcd5775695aa2cf7195570e5f844c3938c177868495f"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Clojure syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 472
+      "height": 472,
+      "sha256": "3c70bdcde816a18cb06d6aa7a418c7680a8889ac0f4c5cd4c455c44dd56787b0"
     }
   ]
 }
