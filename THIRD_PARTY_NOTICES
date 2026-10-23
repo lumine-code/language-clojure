@@ -2,12 +2,13 @@
 Source: https://github.com/pulsar-edit/pulsar
 Revision: 857b0d17a64145205f4db636ff8971a4115c25f6
 Original paths: packages/language-clojure
+Additional query adaptation: cpp/raw C++ injection from pulsar-edit/pulsar at 8c073a47e1b4913782005fca548cef1b52c4ce6e, translated to Lumine's local static injection contract.
 
 Original file: LICENSE.md
 
 MIT License
 
-Copyright (c) 2022-2024 Pulsar-Edit
+Copyright (c) 2022-2026 Pulsar-Edit
 Original work copyright (c) 2011-2022 GitHub Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

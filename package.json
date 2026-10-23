@@ -62,6 +62,8 @@
     "prettier": "^3.9.10"
   },
   "specPackages": [
-    "symbol-tree-sitter"
+    "symbol-tree-sitter",
+    "language-c",
+    "language-javascript"
   ]
 }
