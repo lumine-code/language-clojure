@@ -64,6 +64,7 @@
   "specPackages": [
     "symbol-tree-sitter",
     "language-c",
-    "language-javascript"
+    "language-javascript",
+    "language-source"
   ]
 }

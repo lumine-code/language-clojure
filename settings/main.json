@@ -10,5 +10,17 @@
         "line": ";"
       }
     }
+  },
+  ".source.edn": {
+    "autocomplete": {
+      "extraWordCharacters": "-"
+    },
+    "editor": {
+      "commentStart": "; ",
+      "nonWordCharacters": "/\\()\"':,;~^[]{}`",
+      "commentDelimiters": {
+        "line": ";"
+      }
+    }
   }
 }
