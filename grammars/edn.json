@@ -11,6 +11,7 @@
     "grammar": "clojure.wasm",
     "highlightsQuery": ["edn-only-highlights.scm", "clojure-edn-highlights.scm"],
     "foldsQuery": "clojure-folds.scm",
-    "tagsQuery": "edn-tags.scm"
+    "tagsQuery": "edn-tags.scm",
+    "indentsQuery": "clojure-indents.scm"
   }
 }

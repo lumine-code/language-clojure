@@ -36,6 +36,7 @@
     "highlightsQuery": ["clojure-highlights.scm", "clojure-edn-highlights.scm"],
     "foldsQuery": "clojure-folds.scm",
     "tagsQuery": "clojure-tags.scm",
-    "injectionsQuery": "clojure-injections.scm"
+    "injectionsQuery": "clojure-injections.scm",
+    "indentsQuery": "clojure-indents.scm"
   }
 }
