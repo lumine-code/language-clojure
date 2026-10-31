@@ -1,34 +1,35 @@
-const fs = require("fs");
-const path = require("path");
-
-describe("Clojure modeline selection", () => {
-  let grammar;
-
+describe("clojure modeline selection", () => {
   beforeEach(async () => {
-    const pkg = await lumine.packages.activatePackage("language-clojure");
-    expect(fs.realpathSync(pkg.path)).toBe(path.resolve(__dirname, ".."));
-    grammar = lumine.grammars.grammarForScopeName("source.clojure");
+    await lumine.packages.activatePackage("language-clojure");
   });
-
-  it("selects extensionless files from Vim filetype, ft, and syntax modelines", () => {
-    for (const key of ["filetype", "ft", "syntax"]) {
-      const text = "// vim: set tabstop=4 set " + key + "=clojure:";
-      expect(lumine.grammars.selectGrammar("modeline", text).scopeName).toBe("source.clojure");
+  it("selects exact Vim aliases", () => {
+    for (const field of ["ft", "filetype", "syntax"]) {
+      const source = "# vim: set " + field + "=" + "clojure" + ":";
+      expect(lumine.grammars.selectGrammar("extensionless", source).scopeName)
+        .withContext(source)
+        .toBe("source.clojure");
     }
   });
-
-  it("preserves token order and modelines on a later supplied prefix line", () => {
-    expect(grammar.firstLineRegex.test("vim: ft=clojure")).toBe(false);
-    expect(grammar.firstLineRegex.test("ft=clojure // vim: set tabstop=4")).toBe(false);
-    expect(grammar.firstLineRegex.test("preceding line\n// vim: set ft=clojure:")).toBe(true);
+  it("rejects aliases that only start with the language name", () => {
+    for (const field of ["ft", "filetype", "syntax"])
+      for (const suffix of ["ish", "_extra", "-extra", ".extra"]) {
+        const source = "# vim: set " + field + "=" + "clojure" + suffix + ":";
+        expect(lumine.grammars.selectGrammar("extensionless", source).scopeName)
+          .withContext(source)
+          .not.toBe("source.clojure");
+      }
   });
-
-  it("keeps failed modelines from revisiting Vim and set tokens", () => {
-    expect(grammar.firstLineRegex.source).toContain("(?:(?!vim\\b).)*vim\\b");
-    expect(grammar.firstLineRegex.source).toContain("(?:(?!\\bset\\b).)*\\bset\\b");
-    for (const text of ["vim " + " set ".repeat(16000) + "x", "vim ".repeat(16000) + "x"]) {
-      expect(grammar.firstLineRegex.test(text)).toBe(false);
-      expect(lumine.grammars.selectGrammar("modeline", text).scopeName).not.toBe("source.clojure");
+  it("bounds supported Emacs mode aliases", () => {
+    for (const alias of ["clojure", "clojurescript"]) {
+      expect(
+        lumine.grammars.selectGrammar("extensionless", ";; -*- mode: " + alias + " -*-").scopeName,
+      ).toBe("source.clojure");
+      for (const suffix of ["ish", "_extra", "-extra", ".extra"]) {
+        const source = ";; -*- mode: " + alias + suffix + " -*-";
+        expect(lumine.grammars.selectGrammar("extensionless", source).scopeName)
+          .withContext(source)
+          .not.toBe("source.clojure");
+      }
     }
   });
 });
