@@ -37,6 +37,9 @@
     "foldsQuery": "clojure-folds.scm",
     "tagsQuery": "clojure-tags.scm",
     "injectionsQuery": "clojure-injections.scm",
-    "indentsQuery": "clojure-indents.scm"
+    "indentsQuery": "clojure-indents.scm",
+    "contentEditPolicies": {
+      "content-words": "../lib/content-edit-policy.js"
+    }
   }
 }
