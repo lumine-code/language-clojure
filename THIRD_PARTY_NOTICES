@@ -87,6 +87,9 @@ SOFTWARE.
 Source: https://github.com/mauricioszabo/tree-sitter-clojure
 Revision: 59051aa9c4344d9f8d81264b423b7fd5199cc2d6
 
+Parser source: github:mauricioszabo/tree-sitter-clojure#59051aa9c4344d9f8d81264b423b7fd5199cc2d6
+Resolved commit: 59051aa9c4344d9f8d81264b423b7fd5199cc2d6
+
 Original file: COPYING.txt
 
 Creative Commons Legal Code
